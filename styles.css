@@ -130,8 +130,9 @@ p.lead {
   background-color: #495057;
   color: #fff;
   border-radius: 100%;
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin: 0 1.5rem 1.5rem 0;
+  text-decoration: none;
 }
 
 .social-icons .social-icon svg {
@@ -159,8 +160,8 @@ p.lead {
   background-color: #4285F4;
 }
 
-.social-icons .social-icon.twitter:hover {
-  background-color: #1DA1F2;
+.social-icons .social-icon.instagram:hover {
+  background-color: #FF0069;
 }
 
 .dev-icons {
