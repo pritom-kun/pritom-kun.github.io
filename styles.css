@@ -235,26 +235,29 @@ ul { margin-bottom: 0; }
 /* =============================
    NEWS
 ============================= */
-.news-list { display: flex; flex-direction: column; gap: 0; }
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-left: 3px solid var(--color-accent);
+}
 
 .news-item {
     display: flex;
     gap: 1.5rem;
-    padding: 1.1rem 0 1.1rem 1.5rem;
-    border-left: 3px solid var(--color-accent);
-    margin-bottom: 0.5rem;
+    padding: 0.6rem 0 0.6rem 1.5rem;
     position: relative;
 }
 .news-item::before {
     content: '';
     position: absolute;
     left: -7px;
-    top: 1.4rem;
+    top: 50%;
+    transform: translateY(-50%);
     width: 11px;
     height: 11px;
     border-radius: 50%;
     background: var(--color-accent);
-    border: 2px solid var(--color-bg);
 }
 
 .news-date {
