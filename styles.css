@@ -198,6 +198,12 @@ ul { margin-bottom: 0; }
 /* =============================
    SECTION BASE
 ============================= */
+/* Uniform card gap across the whole site */
+:root { --card-gap: 0.7rem; }
+
+.card-row { --bs-gutter-x: var(--card-gap); --bs-gutter-y: var(--card-gap); }
+.card-row + .card-row { margin-top: var(--card-gap); }
+
 .section-pad { padding: var(--section-pad) 0; }
 .section-light { background: var(--color-bg); }
 .section-white { background: var(--color-surface); }
@@ -343,6 +349,7 @@ ul { margin-bottom: 0; }
     border: 1px solid var(--color-border);
     transition: var(--transition);
 }
+.pub-card + .pub-card { margin-top: var(--card-gap); }
 .pub-card:hover {
     box-shadow: var(--shadow-md);
     border-color: var(--color-accent);
@@ -448,7 +455,7 @@ ul { margin-bottom: 0; }
 
 .timeline-item {
     position: relative;
-    margin-bottom: 2rem;
+    margin-bottom: var(--card-gap);
 }
 .timeline-item:last-child { margin-bottom: 0; }
 
@@ -574,7 +581,7 @@ ul { margin-bottom: 0; }
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
+    gap: var(--card-gap);
 }
 .skill-group {
     background: var(--color-surface);
@@ -655,7 +662,8 @@ ul { margin-bottom: 0; }
 /* =============================
    AWARDS
 ============================= */
-.awards-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.awards-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--card-gap); }
+@media (max-width: 576px) { .awards-list { grid-template-columns: 1fr; } }
 
 .award-item {
     display: flex;
@@ -724,21 +732,36 @@ ul { margin-bottom: 0; }
     line-height: 1.55;
 }
 
+.extra-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--card-gap);
+}
+@media (max-width: 576px) {
+    .extra-list { grid-template-columns: 1fr; }
+    .extra-header { flex-wrap: wrap; }
+    .extra-header > div:first-child { flex: 1 1 100%; }
+}
+
 .extra-item {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 0.5rem;
     padding: 1rem 1.25rem;
     background: var(--color-surface);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--color-border);
-    margin-bottom: 0.6rem;
+    border-top: 4px solid var(--color-accent);
     transition: var(--transition);
 }
 .extra-item:hover { border-color: var(--color-accent); box-shadow: var(--shadow-md); }
+.extra-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
 .extra-role {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
@@ -747,7 +770,12 @@ ul { margin-bottom: 0; }
     margin-bottom: 0.1rem;
 }
 .extra-org { font-size: 0.83rem; color: var(--color-accent); font-weight: 500; }
-.extra-date { font-size: 0.78rem; color: var(--color-muted); white-space: nowrap; }
+.extra-date {
+    font-size: 0.78rem;
+    color: var(--color-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
 
 .extra-committees { padding-left: 1.2rem; margin: 0.75rem 0 0; }
 .extra-committees li { font-size: 0.87rem; color: var(--color-muted); margin-bottom: 0.2rem; }
